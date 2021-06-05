@@ -23,12 +23,20 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy in Homologation') {
+            when {
+                expression { env.GIT_BRANCH != 'origin/main' }
+            }
+            steps {
+                echo 'Deploying in homologation...'
+            }
+        }
+        stage('Deploy in Production') {
             when {
                 expression { env.GIT_BRANCH == 'origin/main' }
             }
             steps {
-                echo 'Deploying...'
+                echo 'Deploying in production...'
             }
         }
     }
