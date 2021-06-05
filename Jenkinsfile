@@ -28,7 +28,7 @@ pipeline {
                 expression { env.GIT_BRANCH != 'origin/main' }
             }
             steps {
-                echo 'Deploying in homologation...'
+                echo 'Deploying in homologation... ;)'
             }
         }
         stage('Deploy in Production') {
