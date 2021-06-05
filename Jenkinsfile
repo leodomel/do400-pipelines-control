@@ -34,6 +34,10 @@ pipeline {
         stage('Deploy in Production') {
             when {
                 expression { env.GIT_BRANCH == 'origin/main' }
+                beforeInput true
+            }
+            input {
+                message 'Deploy the application in Production?'
             }
             steps {
                 echo 'Deploying in production...'
